@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Literasi & Numerasi · Buku BK Kelas 7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main>
+<p class="cfgwarn warn" hidden>Halaman ini belum terhubung ke spreadsheet guru BK (config.js belum diisi).</p>
+
+<header style="margin-bottom:8px">
+  <p class="eyebrow" id="mbab"></p>
+  <h1 id="mtitle"></h1>
+</header>
+
+<section id="identitas" hidden>
+  <form class="form" id="fIdent" novalidate>
+    <h2>Kenalan dulu, yuk!</h2>
+    <label for="fNama">Nama lengkap<input id="fNama" autocomplete="name" required></label>
+    <label for="fKelas">Kelas <span class="hint">Contoh: 7A</span><input id="fKelas" required maxlength="6"></label>
+    <label for="fAbsen">Nomor absen <span class="hint">Boleh dikosongkan</span><input id="fAbsen" inputmode="numeric" maxlength="3"></label>
+    <p class="privacy">🔒 Jawaban refleksi dan skor kuismu akan dikirim ke <b>guru BK SMP Labschool Ciracas</b> dan hanya dibaca oleh guru BK. Tulis dengan jujur. Kamu boleh melewati kartu yang terasa berat.</p>
+    <p id="fErr" class="hint" style="color:var(--bad);font-weight:700"></p>
+    <button class="btn" type="submit">Mulai</button>
+  </form>
+</section>
+
+<section id="menu" hidden>
+  <div class="top"><a class="btn o" href="index.html" style="text-decoration:none">← Semua bab</a></div>
+  <div class="who"><span>Bermain sebagai <b class="whoName"></b></span><button class="linkbtn ganti" type="button">Bukan kamu?</button></div>
+  <div class="modes">
+    <button class="mode" id="goRef" type="button"><b>💭 Kartu Refleksi</b><span id="refInfo"></span></button>
+    <button class="mode k" id="goKuis" type="button"><b>🏆 Tantangan Kuis</b><span>Menjodohkan, Benar–Salah, dan Pilih Semua yang Benar. Skor maksimal 12.</span></button>
+  </div>
+  <p class="note">Jawaban refleksi dikirim ke guru BK setelah kamu menyelesaikan semua kartu. Skor kuis dikirim setelah kamu menekan "Periksa jawaban".</p>
+</section>
+
+<section id="play" hidden>
+  <div class="top"><button class="btn o" id="back" type="button">← Kembali</button><span id="prog"></span></div>
+  <div class="bar"><i id="fill"></i></div>
+  <div class="card">
+    <span class="tag" id="tag"></span>
+    <p class="q" id="q"></p>
+    <label for="ans" class="hint" style="display:block;margin-top:8px">Jawabanmu</label>
+    <textarea id="ans" placeholder="Tulis jawabanmu di sini..."></textarea>
+  </div>
+  <div class="row">
+    <button class="btn" id="done" type="button">✓ Sudah kurefleksikan</button>
+    <button class="btn o" id="skip" type="button">Lewati</button>
+  </div>
+</section>
+
+<section id="end" hidden>
+  <div class="card" style="text-align:center">
+    <p class="big" id="emo">🌟</p>
+    <p class="q" id="endt"></p>
+    <p id="endp" style="color:var(--mut)"></p>
+    <div id="refStatus"></div>
+  </div>
+  <div class="row"><button class="btn" id="again" type="button">Main lagi</button><button class="btn o" id="home2" type="button">Kembali ke menu bab</button></div>
+</section>
+
+<section id="kuis" hidden>
+  <div class="top"><button class="btn o" id="kback" type="button">← Kembali</button><span class="whoName"></span></div>
+  <h2>🏆 Tantangan Kuis</h2>
+  <div id="kbody"></div>
+  <div class="score">
+    <span id="kscore">Jawab semua soal, lalu periksa.</span>
+    <div class="row"><button class="btn o" id="kreset" type="button">Ulangi</button><button class="btn" id="kcheck" type="button">Periksa jawaban</button></div>
+    <div id="kStatus" style="flex-basis:100%"></div>
+  </div>
+</section>
+</main>
+<script src="config.js"></script>
+<script src="assets/data.js"></script>
+<script>window.BAB = "akm";</script>
+<script src="assets/app.js"></script>
+</body>
+</html>
