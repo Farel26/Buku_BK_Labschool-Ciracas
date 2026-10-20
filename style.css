@@ -85,3 +85,10 @@ select{font:inherit;padding:6px 8px;border-radius:8px;border:1px solid var(--lin
 .status.no{background:var(--bads);color:var(--bad)}
 a.cat{color:var(--ink);text-decoration:none}
 .warn{background:var(--bads);color:var(--bad);border-radius:10px;padding:8px 12px;font-size:.85rem;font-weight:700;margin-bottom:10px}
+/* kode QR di beranda */
+.qrbox{display:flex;flex-wrap:wrap;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:16px}
+.qrbox img{width:168px;height:168px;max-width:100%;border-radius:12px;background:#fff;padding:6px;flex:none}
+.qrbox>div{flex:1 1 220px;min-width:0;display:grid;gap:4px}
+.qrbox h2{font-size:1.1rem}
+.qrbox p{margin:0}
+.qrurl{font-weight:700;color:var(--acc);word-break:break-all}
