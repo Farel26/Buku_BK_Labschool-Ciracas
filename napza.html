@@ -3,81 +3,103 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Waspada NAPZA · Buku BK Kelas 7</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap">
+<title>Bab 5 · Waspada NAPZA · Kartu Refleksi &amp; Kuis BK</title>
+<link rel="preload" href="fonts/lilita-one-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-<main>
+<header class="wrap nav">
+  <a class="merek" href="./"><img src="img/logo.png" alt="SMP Labschool Ciracas" width="123" height="40">BK Labscira</a>
+  <nav aria-label="Menu utama"><ul><li><a href="./#bab">Semua bab</a></li><li><a href="./#ruang-bk">Ruang BK</a></li></ul></nav>
+</header>
+<main class="wrap">
+<section class="babhero">
+  <div>
+    <h1 id="mtitle">Bab 5 · Waspada NAPZA</h1>
+    <p>Kartu refleksi dan tantangan kuis Buku BK Kelas 7. Fakta dan mitos NAPZA, cara menolak ajakan, dan ke mana mencari bantuan.</p>
+    <div class="aksi"><a class="btn" href="#main-di-sini"><span class="bintang" aria-hidden="true"></span>Mulai main</a></div>
+  </div>
+  <figure><img src="img/napza.jpg" alt="Ilustrasi siswa menolak ajakan dengan berkata "Nggak, makasih!"" width="1200" height="432"></figure>
+</section>
+
+<div class="panggung" id="main-di-sini">
 <p class="cfgwarn warn" hidden>Halaman ini belum terhubung ke spreadsheet guru BK (config.js belum diisi).</p>
 
-<header style="margin-bottom:8px">
-  <p class="eyebrow" id="mbab"></p>
-  <h1 id="mtitle"></h1>
-</header>
-
-<section id="identitas" hidden>
-  <form class="form" id="fIdent" novalidate>
-    <h2>Kenalan dulu, yuk!</h2>
+<section id="identitas" hidden aria-labelledby="judul-kenal">
+  <div class="kenal"><form class="form" id="fIdent" novalidate>
+    <h2 id="judul-kenal">Kenalan dulu, yuk!</h2>
     <label for="fNama">Nama lengkap<input id="fNama" autocomplete="name" required></label>
-    <label for="fKelas">Kelas <span class="hint">Contoh: 7A</span><input id="fKelas" required maxlength="6"></label>
+    <label for="fKelas">Kelas <span class="hint">Contoh: 7A</span><input id="fKelas" required maxlength="6" autocapitalize="characters"></label>
     <label for="fAbsen">Nomor absen <span class="hint">Boleh dikosongkan</span><input id="fAbsen" inputmode="numeric" maxlength="3"></label>
-    <p class="privacy">🔒 Jawaban refleksi dan skor kuismu akan dikirim ke <b>guru BK SMP Labschool Ciracas</b> dan hanya dibaca oleh guru BK. Tulis dengan jujur. Kamu boleh melewati kartu yang terasa berat.</p>
-    <p id="fErr" class="hint" style="color:var(--bad);font-weight:700"></p>
-    <button class="btn" type="submit">Mulai</button>
-  </form>
+    <p class="privacy">Jawaban refleksi dan skor kuismu akan dikirim ke <b>guru BK SMP Labschool Ciracas</b> dan hanya dibaca oleh guru BK. Tulis dengan jujur. Kartu yang terasa berat boleh kamu lewati.</p>
+    <p id="fErr" role="alert"></p>
+    <div><button class="btn" type="submit"><span class="bintang" aria-hidden="true"></span>Mulai main</button></div>
+  </form><img src="img/siswa.webp" alt="Empat siswa SMP Labschool Ciracas berseragam putih biru" width="1100" height="872" loading="lazy"></div>
 </section>
 
-<section id="menu" hidden>
-  <div class="top"><a class="btn o" href="index.html" style="text-decoration:none">← Semua bab</a></div>
-  <div class="who"><span>Bermain sebagai <b class="whoName"></b></span><button class="linkbtn ganti" type="button">Bukan kamu?</button></div>
+<section id="menu" hidden aria-labelledby="judul-menu">
+  <div class="who"><span>Bermain sebagai <b class="whoName"></b></span><button class="linkbtn ganti" type="button">Bukan kamu? Ganti nama</button></div>
+  <h2 id="judul-menu" style="margin-bottom:24px">Mau main apa?</h2>
   <div class="modes">
-    <button class="mode" id="goRef" type="button"><b>💭 Kartu Refleksi</b><span id="refInfo"></span></button>
-    <button class="mode k" id="goKuis" type="button"><b>🏆 Tantangan Kuis</b><span>Menjodohkan, Benar–Salah, dan Pilih Semua yang Benar. Skor maksimal 12.</span></button>
+    <button class="mode" id="goRef" type="button"><img src="img/remaja.jpg" alt="" loading="lazy"><b>Kartu Refleksi</b><span id="refInfo"></span></button>
+    <button class="mode k" id="goKuis" type="button"><img src="img/akm.jpg" alt="" loading="lazy"><b>Tantangan Kuis</b><span>Menjodohkan, Benar–Salah, dan Pilih Semua yang Benar. Skor maksimal 12.</span></button>
   </div>
-  <p class="note">Jawaban refleksi dikirim ke guru BK setelah kamu menyelesaikan semua kartu. Skor kuis dikirim setelah kamu menekan "Periksa jawaban".</p>
+  <p class="note">Jawaban refleksi dikirim ke guru BK setelah kamu menyelesaikan semua kartu. Skor kuis dikirim setelah kamu menekan Periksa jawaban.</p>
 </section>
 
-<section id="play" hidden>
-  <div class="top"><button class="btn o" id="back" type="button">← Kembali</button><span id="prog"></span></div>
+<section id="play" hidden aria-label="Kartu refleksi">
+  <div class="top"><button class="btn lite" id="back" type="button">Kembali</button><span id="prog"></span></div>
   <div class="bar"><i id="fill"></i></div>
   <div class="card">
     <span class="tag" id="tag"></span>
     <p class="q" id="q"></p>
-    <label for="ans" class="hint" style="display:block;margin-top:8px">Jawabanmu</label>
+    <label for="ans" class="hintlbl">Jawabanmu</label>
     <textarea id="ans" placeholder="Tulis jawabanmu di sini..."></textarea>
   </div>
   <div class="row">
-    <button class="btn" id="done" type="button">✓ Sudah kurefleksikan</button>
-    <button class="btn o" id="skip" type="button">Lewati</button>
+    <button class="btn" id="done" type="button"><span class="bintang" aria-hidden="true"></span>Sudah kurefleksikan</button>
+    <button class="btn lite" id="skip" type="button">Lewati kartu ini</button>
   </div>
 </section>
 
-<section id="end" hidden>
+<section id="end" hidden aria-labelledby="endt">
   <div class="card" style="text-align:center">
-    <p class="big" id="emo">🌟</p>
-    <p class="q" id="endt"></p>
-    <p id="endp" style="color:var(--mut)"></p>
+    <div class="big" id="emo" aria-hidden="true"></div>
+    <h2 class="q" id="endt" style="margin:0 auto"></h2>
+    <p id="endp" style="margin-top:12px"></p>
     <div id="refStatus"></div>
   </div>
-  <div class="row"><button class="btn" id="again" type="button">Main lagi</button><button class="btn o" id="home2" type="button">Kembali ke menu bab</button></div>
+  <div class="row"><button class="btn" id="again" type="button">Main lagi</button><button class="btn lite" id="home2" type="button">Kembali ke menu bab</button></div>
 </section>
 
-<section id="kuis" hidden>
-  <div class="top"><button class="btn o" id="kback" type="button">← Kembali</button><span class="whoName"></span></div>
-  <h2>🏆 Tantangan Kuis</h2>
+<section id="kuis" hidden aria-labelledby="judul-kuis">
+  <div class="top"><button class="btn lite" id="kback" type="button">Kembali</button><span class="whoName"></span></div>
+  <h2 id="judul-kuis" style="margin-bottom:20px">Tantangan Kuis</h2>
   <div id="kbody"></div>
   <div class="score">
     <span id="kscore">Jawab semua soal, lalu periksa.</span>
-    <div class="row"><button class="btn o" id="kreset" type="button">Ulangi</button><button class="btn" id="kcheck" type="button">Periksa jawaban</button></div>
-    <div id="kStatus" style="flex-basis:100%"></div>
+    <div class="row"><button class="btn lite" id="kreset" type="button">Ulangi</button><button class="btn" id="kcheck" type="button">Periksa jawaban</button></div>
+    <div id="kStatus"></div>
   </div>
 </section>
+</div>
+<section class="bab lain" aria-labelledby="judul-lain">
+  <div class="kepala"><h2 id="judul-lain" class="muncul">Main bab lainnya</h2><span class="muncul">5 bab</span></div>
+  <ul>
+      <li class="muncul"><a href="dunia.html"><img src="img/dunia-kotak.jpg" alt="" width="112" height="112" loading="lazy"><div><div class="baris"><b>Dunia SMP</b><small>Bab 1</small></div><p class="desk">Kenalan dengan budaya, aturan, dan fasilitas sekolah barumu, plus tahu harus ke siapa saat butuh bantuan.</p></div></a></li>
+      <li class="muncul"><a href="akm.html"><img src="img/akm-kotak.jpg" alt="" width="112" height="112" loading="lazy"><div><div class="baris"><b>Literasi &amp; Numerasi</b><small>Bab 2</small></div><p class="desk">Paham apa itu AKM tanpa panik, lalu latihan memahami bacaan dan berpikir pakai angka.</p></div></a></li>
+      <li class="muncul"><a href="remaja.html"><img src="img/remaja-kotak.jpg" alt="" width="112" height="112" loading="lazy"><div><div class="baris"><b>Masa Remaja</b><small>Bab 3</small></div><p class="desk">Kenali perubahan tubuh dan perasaanmu, dan cara mengelola emosi dengan sehat.</p></div></a></li>
+      <li class="muncul"><a href="teman.html"><img src="img/teman-kotak.jpg" alt="" width="112" height="112" loading="lazy"><div><div class="baris"><b>Teman &amp; Relasi</b><small>Bab 4</small></div><p class="desk">Pertemanan yang sehat, bercanda vs bullying, batasan diri, dan berani bilang tidak.</p></div></a></li>
+      <li class="muncul"><a href="minat.html"><img src="img/minat-kotak.jpg" alt="" width="112" height="112" loading="lazy"><div><div class="baris"><b>Minat &amp; Bakat</b><small>Bab 6</small></div><p class="desk">Bedanya minat dan bakat, tipe kepribadian karier, dan tujuan SMART-mu.</p></div></a></li>
+  </ul>
+</section>
 </main>
+<footer class="kaki" style="margin-top:0"><div class="wrap akhir" style="margin-top:0"><span>© 2026 Tim Bimbingan dan Konseling SMP Labschool Ciracas</span><a class="btn" href="./">Semua bab</a></div></footer>
 <script src="config.js"></script>
 <script src="data.js"></script>
 <script>window.BAB = "napza";</script>
 <script src="app.js"></script>
+<script src="halaman.js"></script>
 </body>
 </html>

@@ -12,7 +12,12 @@
   var deck = [], i = 0, done = 0, jawaban = [];
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
-  function show(s) { ["identitas", "menu", "play", "end", "kuis"].forEach(function (x) { var el = $(x); if (el) el.hidden = x !== s; }); window.scrollTo(0, 0); }
+  function show(s, diam) {
+    ["identitas", "menu", "play", "end", "kuis"].forEach(function (x) { var el = $(x); if (el) el.hidden = x !== s; });
+    if (diam) return;
+    var pg = $("main-di-sini");
+    if (pg) pg.scrollIntoView({ block: "start", behavior: "smooth" }); else window.scrollTo(0, 0);
+  }
   function shuffle(a) { a = a.slice(); for (var k = a.length - 1; k > 0; k--) { var j = Math.floor(Math.random() * (k + 1)); var t = a[k]; a[k] = a[j]; a[j] = t; } return a; }
 
   /* ---------- identitas siswa (diingat di perangkat ini saja) ---------- */
@@ -34,7 +39,7 @@
     fetch(CFG.SCRIPT_URL, { method: "POST", body: JSON.stringify(payload) })
       .then(function (r) { return r.json(); })
       .then(function (res) {
-        if (res && res.ok) { statusEl.className = "status ok"; statusEl.textContent = "✓ Terkirim ke guru BK. Terima kasih!"; }
+        if (res && res.ok) { statusEl.className = "status ok"; statusEl.textContent = "Terkirim ke guru BK. Terima kasih!"; }
         else throw new Error(res && res.error || "gagal");
       })
       .catch(function () {
@@ -56,11 +61,11 @@
   function mulai() {
     var D = window.DECKS[KEY];
     document.title = D.n + " · Buku BK Kelas 7";
-    $("mbab").textContent = D.b; $("mtitle").textContent = D.e + " " + D.n;
+    
     $("refInfo").textContent = D.c.length + " kartu tanya & tantangan untuk mengenal dirimu. Tidak ada jawaban benar atau salah.";
     if (!URL_OK) document.querySelectorAll(".cfgwarn").forEach(function (el) { el.hidden = false; });
     var s = getSiswa();
-    if (s) { window._siswa = s; renderWho(); show("menu"); } else show("identitas");
+    if (s) { window._siswa = s; renderWho(); show("menu", true); } else show("identitas", true);
   }
   function simpanIdentitas(e) {
     e.preventDefault();
@@ -76,7 +81,7 @@
   function card() {
     if (i >= deck.length) return finish();
     var c = deck[i], D = window.DECKS[KEY];
-    $("tag").textContent = D.e + " " + D.n + " · " + c[0];
+    $("tag").textContent = D.b + " · " + (c[0] === "Tanya" ? "Kartu tanya" : "Kartu tantangan");
     $("q").textContent = c[1]; $("ans").value = "";
     $("prog").textContent = "Kartu " + (i + 1) + " dari " + deck.length;
     $("fill").style.width = (i / deck.length * 100) + "%";
@@ -89,7 +94,7 @@
   function finish() {
     $("fill").style.width = "100%";
     var r = done / deck.length;
-    $("emo").textContent = r >= .8 ? "🌟" : r >= .4 ? "🌿" : "🌱";
+    
     $("endt").textContent = done + " dari " + deck.length + " kartu sudah kamu refleksikan";
     $("endp").textContent = r >= .8 ? "Hebat! Mengenal diri sendiri adalah langkah awal yang penting." : "Setiap kartu yang kamu renungkan sudah berarti. Kamu bisa mengulangnya kapan saja.";
     show("end");
@@ -100,16 +105,16 @@
 
   /* kuis */
   function kuis() {
-    var K = window.KUIS[KEY], h = '<div class="game"><h3>🔗 Game 1 · Menjodohkan</h3><p class="howto">Pilih huruf pasangan yang tepat untuk setiap istilah.</p>';
+    var K = window.KUIS[KEY], h = '<div class="game"><h3>Game 1 · Menjodohkan</h3><p class="howto">Pilih huruf pasangan yang tepat untuk setiap istilah.</p>';
     K.jodoh.forEach(function (t, n) {
       h += '<div class="pair" id="jp' + n + '"><b>' + (n + 1) + ". " + esc(t) + '</b><select id="j' + n + '" aria-label="Pasangan untuk ' + esc(t) + '"><option value="">–</option>' + L.split("").map(function (x) { return "<option>" + x + "</option>"; }).join("") + "</select></div>";
     });
     h += '<div class="opts">' + K.kanan.map(function (x, j) { return "<div><b>" + L[j] + ".</b> " + esc(x[0]) + "</div>"; }).join("") + '</div><div id="jfb"></div></div>';
-    h += '<div class="game"><h3>✅ Game 2 · Benar atau Salah</h3><p class="howto">Tekan B kalau pernyataannya benar, S kalau salah.</p>';
+    h += '<div class="game"><h3>Game 2 · Benar atau Salah</h3><p class="howto">Tekan B kalau pernyataannya benar, S kalau salah.</p>';
     K.bs.forEach(function (s, n) {
       h += '<div class="bs" id="bp' + n + '"><span>' + (n + 1) + ". " + esc(s[0]) + '</span><div class="seg" role="group" aria-label="Pernyataan ' + (n + 1) + '"><button type="button" data-b="' + n + '" data-v="1" aria-pressed="false">B</button><button type="button" data-b="' + n + '" data-v="0" aria-pressed="false">S</button></div></div><div id="bfb' + n + '"></div>';
     });
-    h += '</div><div class="game"><h3>☑️ Game 3 · Pilih Semua yang Benar</h3><p class="howto">Jawaban benar bisa lebih dari satu. Poin didapat kalau semua pilihanmu tepat.</p>';
+    h += '</div><div class="game"><h3>Game 3 · Pilih Semua yang Benar</h3><p class="howto">Jawaban benar bisa lebih dari satu. Poin didapat kalau semua pilihanmu tepat.</p>';
     K.mcma.forEach(function (q, n) {
       h += '<div class="mc" id="mp' + n + '"><p>' + (n + 1) + ". " + esc(q[0]) + "</p>" + q[1].map(function (o, j) { return '<label><input type="checkbox" id="m' + n + "_" + j + '"> <span><b>' + L[j] + ".</b> " + esc(o[0]) + "</span></label>"; }).join("") + '<div id="mfb' + n + '"></div></div>';
     });
@@ -117,7 +122,7 @@
     $("kscore").textContent = "Jawab semua soal, lalu periksa."; $("kStatus").className = ""; $("kStatus").textContent = "";
     $("kcheck").disabled = false; show("kuis");
   }
-  function fb(ok, txt) { return '<div class="fb ' + (ok ? "ok" : "no") + '">' + (ok ? "✓ Benar" : "✗ Belum tepat") + (txt ? " · " + esc(txt) : "") + "</div>"; }
+  function fb(ok, txt) { return '<div class="fb ' + (ok ? "ok" : "no") + '">' + (ok ? "Benar" : "Belum tepat") + (txt ? " · " + esc(txt) : "") + "</div>"; }
   function periksa() {
     var K = window.KUIS[KEY], sj = 0, sb = 0, sm = 0, aj = [], ab = [], am = [];
     function kunciJ(n) { return L[K.kanan.findIndex(function (x) { return x[1] === n + 1; })]; }
@@ -133,7 +138,7 @@
       if (ok) sm++; am.push((n + 1) + "-" + (pil || "?"));
       $("mfb" + n).innerHTML = fb(ok, "Kunci: " + q[1].map(function (o, j) { return o[1] ? L[j] : ""; }).join(""));
     });
-    var s = sj + sb + sm, g = s >= 11 ? "Jagoan! 🌟" : s >= 7 ? "Mantap, tinggal sedikit lagi! 🌿" : "Ayo baca lagi babnya, lalu coba ulang. 🌱";
+    var s = sj + sb + sm, g = s >= 11 ? "Jagoan Refleksi!" : s >= 7 ? "Mantap, tinggal sedikit lagi!" : "Ayo baca lagi babnya, lalu coba ulang.";
     $("kscore").innerHTML = "<strong>Skormu: " + s + " / 12</strong> " + g;
     $("kcheck").disabled = true;
     kirim({ jenis: "kuis", skor: s, skorJodoh: sj, skorBS: sb, skorMCMA: sm, jawabJodoh: aj.join(", "), jawabBS: ab.join(", "), jawabMCMA: am.join(", ") }, $("kStatus"));
@@ -141,7 +146,7 @@
 
   /* ---------- sambungkan tombol ---------- */
   document.addEventListener("DOMContentLoaded", function () {
-    if (!KEY) { beranda(); return; }
+    if (!KEY) { if ($("cats")) beranda(); return; }
     if (!window.DECKS[KEY]) { document.body.textContent = "Bab tidak ditemukan."; return; }
     $("fIdent").addEventListener("submit", simpanIdentitas);
     document.querySelectorAll(".ganti").forEach(function (b) { b.onclick = gantiNama; });

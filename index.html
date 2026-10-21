@@ -3,32 +3,142 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kartu Refleksi Buku BK Kelas 7</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap">
+<title>Kartu Refleksi & Kuis BK Kelas 7 · SMP Labschool Ciracas</title>
+<meta name="description" content="Game kartu refleksi dan tantangan kuis pendamping Buku Bimbingan dan Konseling Kelas 7 SMP Labschool Ciracas.">
+<link rel="preload" href="fonts/lilita-one-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
+<header class="wrap nav">
+  <a class="merek" href="./"><img src="img/logo.png" alt="SMP Labschool Ciracas" width="123" height="40">BK Labscira</a>
+  <nav aria-label="Menu utama"><ul>
+    <li><a href="#bab">Pilih bab</a></li>
+    <li><a href="#cara">Cara main</a></li>
+    <li><a href="#ruang-bk">Ruang BK</a></li>
+  </ul></nav>
+</header>
+
 <main>
-<section>
-  <p class="eyebrow">Buku BK Kelas 7 · SMP Labschool Ciracas</p>
-  <h1>🃏 Kartu Refleksi & Tantangan Kuis</h1>
-  <p class="sub">Pilih bab yang sedang kamu pelajari. Di tiap bab ada kartu refleksi untuk mengenal diri dan tantangan kuis untuk menguji pemahamanmu.</p>
-  <div class="grid" id="cats"></div>
-  <div class="qrbox">
-    <img src="qr-beranda.png" alt="Kode QR menuju halaman beranda ini" width="168" height="168">
+<section class="hero">
+  <svg class="bintang-besar" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0C61 30 70 39 100 50C70 61 61 70 50 100C39 70 30 61 0 50C30 39 39 30 50 0Z"/></svg>
+  <div class="wrap isi">
     <div>
-      <p class="eyebrow">Bagikan ke teman sekelas</p>
-      <h2>Pindai untuk membuka game ini</h2>
-      <p>Arahkan kamera HP ke kode QR, atau ketik alamatnya:</p>
-      <p class="qrurl">farel26.github.io/Buku_BK_Labschool-Ciracas</p>
+      <h1>Kartu Refleksi &amp; Kuis BK</h1>
+      <p class="sub">Teman main Buku BK Kelas 7 SMP Labschool Ciracas. Pilih bab, jawab kartu dengan jujur, lalu kumpulkan bintang di tantangan kuisnya.</p>
+      <div class="aksi">
+        <a class="btn" href="#bab"><span class="bintang" aria-hidden="true"></span>Pilih bab sekarang</a>
+        <span class="catatan">6 bab · 54 kartu · 6 kuis</span>
+      </div>
+    </div>
+    <figure class="shutter"><img src="img/siswa.webp" alt="Empat siswa SMP Labschool Ciracas berseragam putih biru melompat gembira, ilustrasi dari cover buku" width="1100" height="872"></figure>
+  </div>
+</section>
+
+<section class="wrap bab" id="bab" aria-labelledby="judul-bab">
+  <div class="kepala"><h2 id="judul-bab" class="muncul">Pilih babmu</h2><span class="muncul">6 bab</span></div>
+  <ul>
+      <li class="muncul"><a href="dunia.html">
+        <img src="img/dunia-kotak.jpg" alt="" width="112" height="112" loading="lazy">
+        <div>
+          <div class="baris"><b>Dunia SMP</b><small>Bab 1</small></div>
+          <p class="desk">Kenalan dengan budaya, aturan, dan fasilitas sekolah barumu, plus tahu harus ke siapa saat butuh bantuan.</p>
+          <p class="isi-bab">8 kartu refleksi · kuis 12 poin</p>
+        </div>
+      </a></li>
+      <li class="muncul"><a href="akm.html">
+        <img src="img/akm-kotak.jpg" alt="" width="112" height="112" loading="lazy">
+        <div>
+          <div class="baris"><b>Literasi &amp; Numerasi</b><small>Bab 2</small></div>
+          <p class="desk">Paham apa itu AKM tanpa panik, lalu latihan memahami bacaan dan berpikir pakai angka.</p>
+          <p class="isi-bab">6 kartu refleksi · kuis 12 poin</p>
+        </div>
+      </a></li>
+      <li class="muncul"><a href="remaja.html">
+        <img src="img/remaja-kotak.jpg" alt="" width="112" height="112" loading="lazy">
+        <div>
+          <div class="baris"><b>Masa Remaja</b><small>Bab 3</small></div>
+          <p class="desk">Kenali perubahan tubuh dan perasaanmu, dan cara mengelola emosi dengan sehat.</p>
+          <p class="isi-bab">12 kartu refleksi · kuis 12 poin</p>
+        </div>
+      </a></li>
+      <li class="muncul"><a href="teman.html">
+        <img src="img/teman-kotak.jpg" alt="" width="112" height="112" loading="lazy">
+        <div>
+          <div class="baris"><b>Teman &amp; Relasi</b><small>Bab 4</small></div>
+          <p class="desk">Pertemanan yang sehat, bercanda vs bullying, batasan diri, dan berani bilang tidak.</p>
+          <p class="isi-bab">14 kartu refleksi · kuis 12 poin</p>
+        </div>
+      </a></li>
+      <li class="muncul"><a href="napza.html">
+        <img src="img/napza-kotak.jpg" alt="" width="112" height="112" loading="lazy">
+        <div>
+          <div class="baris"><b>Waspada NAPZA</b><small>Bab 5</small></div>
+          <p class="desk">Fakta dan mitos NAPZA, cara menolak ajakan, dan ke mana mencari bantuan.</p>
+          <p class="isi-bab">6 kartu refleksi · kuis 12 poin</p>
+        </div>
+      </a></li>
+      <li class="muncul"><a href="minat.html">
+        <img src="img/minat-kotak.jpg" alt="" width="112" height="112" loading="lazy">
+        <div>
+          <div class="baris"><b>Minat &amp; Bakat</b><small>Bab 6</small></div>
+          <p class="desk">Bedanya minat dan bakat, tipe kepribadian karier, dan tujuan SMART-mu.</p>
+          <p class="isi-bab">8 kartu refleksi · kuis 12 poin</p>
+        </div>
+      </a></li>
+  </ul>
+</section>
+
+<div class="pita" aria-label="Ilustrasi dari keenam bab buku"><div class="jalur"><img src="img/dunia.jpg" alt="Siswa baru menyapa di depan sekolah" loading="lazy"><img src="img/akm.jpg" alt="Kartu literasi dan numerasi" loading="lazy"><img src="img/remaja.jpg" alt="Remaja bercermin" loading="lazy"><img src="img/teman.jpg" alt="Empat sahabat dan grup chat kelas" loading="lazy"><img src="img/napza.jpg" alt="Siswa berani menolak ajakan" loading="lazy"><img src="img/minat.jpg" alt="Siswa membayangkan cita-cita" loading="lazy"><img src="img/dunia.jpg" alt="" loading="lazy" aria-hidden="true"><img src="img/akm.jpg" alt="" loading="lazy" aria-hidden="true"><img src="img/remaja.jpg" alt="" loading="lazy" aria-hidden="true"><img src="img/teman.jpg" alt="" loading="lazy" aria-hidden="true"><img src="img/napza.jpg" alt="" loading="lazy" aria-hidden="true"><img src="img/minat.jpg" alt="" loading="lazy" aria-hidden="true"></div></div>
+
+<section class="wrap cara" id="cara" aria-labelledby="judul-cara">
+  <div class="intro">
+    <h2 id="judul-cara" class="muncul">Cara mainnya gampang</h2>
+    <p class="muncul">Setiap bab punya dua permainan. Kartu Refleksi untuk mengenal dirimu, dan Tantangan Kuis untuk mengecek pemahamanmu. Main sendiri atau bareng teman sebangku, di HP atau laptop.</p>
+  </div>
+  <div class="akordeon muncul" role="list">
+    <button class="panel" type="button" role="listitem" aria-expanded="true"><span class="nama-tutup">Isi nama</span><span class="buka"><span class="teks"><b>Isi nama &amp; kelas</b><p>Tulis nama lengkap dan kelasmu, misalnya 7A. Cukup sekali, HP-mu akan mengingatnya.</p></span><img src="img/teman.jpg" alt="Ilustrasi empat sahabat" loading="lazy"></span></button>
+    <button class="panel" type="button" role="listitem" aria-expanded="false"><span class="nama-tutup">Pilih permainan</span><span class="buka"><span class="teks"><b>Pilih permainan</b><p>Kartu Refleksi berisi pertanyaan dan tantangan kecil. Tantangan Kuis berisi menjodohkan, benar–salah, dan pilih semua yang benar.</p></span><img src="img/akm.jpg" alt="Ilustrasi kartu literasi dan numerasi" loading="lazy"></span></button>
+    <button class="panel" type="button" role="listitem" aria-expanded="false"><span class="nama-tutup">Jawab jujur</span><span class="buka"><span class="teks"><b>Jawab jujur</b><p>Di kartu refleksi tidak ada jawaban benar atau salah. Kartu yang terasa berat boleh kamu lewati.</p></span><img src="img/remaja.jpg" alt="Ilustrasi remaja bercermin" loading="lazy"></span></button>
+    <button class="panel" type="button" role="listitem" aria-expanded="false"><span class="nama-tutup">Kumpulkan bintang</span><span class="buka"><span class="teks"><b>Kumpulkan bintang</b><p>Kuis tiap bab bernilai 12 poin. Skor dan pembahasannya langsung keluar setelah kamu menekan Periksa jawaban.</p></span><img src="img/minat.jpg" alt="Ilustrasi siswa membayangkan cita-cita" loading="lazy"></span></button>
+    <button class="panel" type="button" role="listitem" aria-expanded="false"><span class="nama-tutup">Kirim ke guru BK</span><span class="buka"><span class="teks"><b>Kirim ke guru BK</b><p>Jawaban refleksi dan skor kuismu dikirim ke guru BK dan hanya dibaca oleh guru BK.</p></span><img src="img/ruangbk.jpg" alt="Ilustrasi alur bertemu guru BK" loading="lazy"></span></button>
+  </div>
+</section>
+
+<section class="wrap kupon-wrap" id="ruang-bk" aria-labelledby="judul-bk">
+  <div class="kupon muncul">
+    <div class="kiri">
+      <div>
+        <h2 id="judul-bk">Mau cerita langsung?</h2>
+        <p style="margin-top:20px">Pintu ruang BK selalu terbuka, untuk cerita besar maupun cerita kecil.</p>
+      </div>
+      <div class="bagikan">
+        <img src="qr-beranda.png" alt="Kode QR menuju halaman ini" width="112" height="112">
+        <p><b>Ajak teman sekelas</b>Pindai kode QR ini untuk membuka halaman ini di HP lain.</p>
+      </div>
+    </div>
+    <div class="kanan">
+      <p class="info muncul"><b>Lokasi ruang BK</b><span>Lantai 1 di samping lobi, dan lantai 7 di sebelah Tata Usaha.</span></p>
+      <p class="info muncul"><b>Waktu layanan</b><span>Istirahat pertama, istirahat kedua, dan 1 jam setelah pulang sekolah.</span></p>
+      <p class="info muncul"><b>Cara membuat janji</b><span>Kirim pesan WhatsApp ke guru BK, atau datang langsung kalau masalahnya mendesak.</span></p>
+      <p class="info muncul"><b>Guru BK</b><span>Nurul Wafa Amatullah, Muhammad Farel P., dan Asmaa Mufida Rahman.</span></p>
     </div>
   </div>
-  <p class="note">Jawaban refleksi dan skor kuis dikirim ke guru BK SMP Labschool Ciracas. Kalau ada kartu yang terasa berat, kamu boleh melewatinya dan menceritakannya langsung ke guru BK.</p>
 </section>
 </main>
-<script src="config.js"></script>
-<script src="data.js"></script>
-<script src="app.js"></script>
+
+<footer class="kaki">
+  <div class="wrap">
+    <div class="blok" aria-label="Labscira"><span>L</span><span>A</span><span>B</span><span>S</span><span>C</span><span>I</span><span>R</span><span>A</span></div>
+    <div class="kolom">
+      <div><b>Bab 1–3</b><a href="dunia.html">Bab 1 · Dunia SMP</a><a href="akm.html">Bab 2 · Literasi &amp; Numerasi</a><a href="remaja.html">Bab 3 · Masa Remaja</a></div>
+      <div><b>Bab 4–6</b><a href="teman.html">Bab 4 · Teman &amp; Relasi</a><a href="napza.html">Bab 5 · Waspada NAPZA</a><a href="minat.html">Bab 6 · Minat &amp; Bakat</a></div>
+      <div><b>Bantuan</b><a href="#cara">Cara main</a><a href="#ruang-bk">Ruang BK</a></div>
+      <div><b>SMP Labschool Ciracas</b><span>Jl. H. Baping No. 33, Ciracas, Jakarta Timur 13750</span><a href="https://www.instagram.com/smp.labscira/">Instagram @smp.labscira</a><a href="https://www.smplabschoolciracas.sch.id/">smplabschoolciracas.sch.id</a></div>
+    </div>
+    <div class="akhir"><span>© 2026 Tim Bimbingan dan Konseling SMP Labschool Ciracas</span><a class="btn" href="#">Ke atas</a></div>
+  </div>
+</footer>
+<script src="halaman.js"></script>
 </body>
 </html>
